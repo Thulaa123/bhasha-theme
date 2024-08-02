@@ -13,4 +13,6 @@ docker pull octobercms/october-dev
 6. Open a new terminal and run the below command to give the necessary permissions to the plugin
 ```
 chown -R www-data:www-data /var/www/html/themes
+
 ```
+7. Activate the theme form the backend settings > frontend themes > activate the relevant theme
