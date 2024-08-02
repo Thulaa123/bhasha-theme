@@ -1,0 +1,26 @@
+url = "/"
+layout = "default"
+title = "home"
+
+[session]
+security = "user"
+redirect = "login"
+checkToken = 0
+
+[authUserData]
+==
+<!--**********************************
+    Content body start
+***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body" id="AllProposals">
+                <h5>User details</h5>
+                {{ authUserData.getData }}
+                <h5>User Course details</h5>
+                {{ authUserData.getCourses}}
+            </div>
+        </div>
+    </div>
+</div>

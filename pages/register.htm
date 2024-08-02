@@ -1,0 +1,118 @@
+url = "/register"
+layout = "default-front"
+title = "register"
+
+[account]
+redirect = "login"
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+
+[courseInfo]
+==
+<div class="bg"></div>
+<div class="authincation" style="height: 100vh; overflow-x: hidden; overflow-y: scroll;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
+            <div class="col-md-6">
+                <div class="authincation-content mt-2" style="border-radius: 15px; overflow:hidden !important;">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+                                <div class="text-center mb-3">
+                                    <img src="{{ 'assets/images/logos/bhasha_logo.png' | theme }}" alt="" width="50px">
+                                </div>
+                                <h4 class="text-center mb-4">Create your account</h4>
+                                {% flash %}
+                                    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endflash %}
+                                {% if canRegister %}
+                                <form data-request="onRegister" method="POST" accept-charset="UTF-8" data-request-validate data-request-flash>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>First Name<sup style="color: red;">*</sup></strong></label>
+                                        <input type="text" name="first_name" class="form-control" placeholder="Name">
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="first_name"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Last Name<sup style="color: red;">*</sup></strong></label>
+                                        <input type="text" name="last_name" class="form-control" placeholder="Name">
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="last_name"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>BirthDay<sup style="color: red;">*</sup></strong></label>
+                                        <input type="date" name="birthday" class="form-control">
+                                        <span class="invalid-feedback" data-validate-for="birthday"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Email<sup style="color: red;">*</sup></strong></label>
+                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                        <span class="invalid-feedback" data-validate-for="email"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Contact Number<sup style="color: red;">*</sup></strong></label>
+                                        <input type="text" name="contact_number" class="form-control" placeholder="Contact Number">
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="contact_number"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Address<sup style="color: red;">*</sup></strong></label>
+                                        <textarea type="text" name="address" class="form-control" placeholder="Address"></textarea>
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="address"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Course<sup style="color: red;">*</sup></strong></label>
+                                        <select name="course_id" class="form-control default-select">
+                                            <option disabled selected>Select Your course</option>
+                                            {% for course in courseInfo.getInfo %}
+                                            <option value="{{ course.id }}">{{ course.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="course_id"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Username<sup style="color: red;">*</sup></strong></label>
+                                        <input type="text" name="username" class="form-control" placeholder="Username">
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="username"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Password<sup style="color: red;">*</sup></strong></label>
+                                        <input type="password" name="password" class="form-control" onpaste="return false" placeholder="Password" id="password-input"
+                                        aria-describedby="passwordInput">
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="password"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-1"><strong>Confirm Password<sup style="color: red;">*</sup></strong></label>
+                                        <input type="password" name="password_confirmation" class="form-control"
+                                        id="accountPasswordConfirm" placeholder="Confirm password">
+                                        <span class="invalid-feedback animated fadeInUp" data-validate-for="password_confirmation"></span>
+                                    </div>
+                                    <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox ml-1 checkbox-primary">
+                                                <input type="checkbox" class="custom-control-input" checked value="1" name="agree" id="basic_checkbox_1">
+                                                <label class="custom-control-label" for="basic_checkbox_1">I agree to the Terms and Conditions</label>
+                                            </div>
+                                            <div class="invalid-feedback animated fadeInUp" data-validate-for="agree"></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-block" data-attach-loading>Create account</button>
+                                    </div>
+                                </form>
+                                {% else %}
+                                <div class="alert alert-warning alert-alt fade show">
+                                    <strong>Warning!</strong> Registration is disabled.
+                                </div>
+                                {% endif %}
+                                <div class="new-account mt-3">
+                                    <p>Already have an account? <a class="text-primary" href="{{ 'login' | page }}">Sign in</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
