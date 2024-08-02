@@ -18,7 +18,7 @@ AND
 ```
 php artisan october:migrate
 ```
-5. Rename the ``bhasha-plugin`` folder on the graffon folder to ``xinstitute``
+5. Rename the ``bhasha-theme`` folder on the graffon folder to ``xinstitute``
 6. And RUN
 ```
  php artisan october:migrate
