@@ -2,6 +2,8 @@
 
 ## Installation
 
+NOTE if 1. AND 2. is already done continue form step 3.
+
 1. Pull the OctoberCMS Development Docker Image Using
 ```
 docker pull octobercms/october-dev
